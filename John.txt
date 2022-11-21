@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Background color changes to green when input is given. color changes to red when the field is left.</p>
+User name: <input type="John" id="myInput" onfocus="func1()" onblur="func2()">
+<script>
+function func1() {
+//background color changes to green
+document.getElementById("myInput").style.background = "green";
+}
+function func2() {
+//background color changes to yellow
+document.getElementById("myInput").style.background = "red";
+}
+</script>
+</body>
+</html>
