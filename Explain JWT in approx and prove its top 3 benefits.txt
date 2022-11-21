@@ -1,0 +1,30 @@
+A JSON web token (JWT) is a JSON object used to communicate information securely over the internet (between two parties). It can be used for the exchange of information as well as an authentication method. The header, payload, and signature make up the majority of the token's structure. There are dots between these three sections (.). JWT specifies two formats for the information we communicate from one party to another: serialized and deserialized. Data is primarily transferred via the network with each request and response using the serialized approach. While reading and writing data to the web token uses the deserialized method.
+
+Deserialized
+JWT only has the header and the payload when it is deserialized.
+They are both simple JSON objects.
+
+Header
+The most common application of a header in a JWT is to explain the cryptographic operations carried out on it, such as the signature and decryption methods. Additionally, it might include information on the structure and content of the information we are transmitting. This data is presented as a JSON object, which is subsequently encoded to a BASE64URL. If the JWT is signed/unsigned or encrypted, the cryptographic operations in the header determine which algorithm techniques to employ.
+
+Payload
+The JWT's payload is where all of the user data is added. The "claims" of the JWT are another name for this information. It is usually advisable not to enter any confidential information in this place since anyone can read this information. User information is typically included in this section. This data is presented as a JSON object, which is subsequently encoded to a BASE64URL. A payload can contain as many claims as we like, but unlike a header, a payload does not require any claims.
+
+Serialized
+When JWT is serialized, it represents a string with the following structure:
+[header]. [payload]. [signature]
+The serialized JWT is made up of all three of these elements. Header and payload are already understood, as well as their functions.
+
+Signature
+The third and last component of the JWT is used to confirm the validity of the token. Together with a dot (. ), the BASE64URL encoded header and payload are hashed using the hashing algorithm specified in the header with a secret key. We then use the dot (.) character to append this signature to the header and payload, creating our actual token header.payload.signature
+
+Benefits
+When compared to simple web tokens (SWTs) and Security Assertion Markup Language (SAML) tokens, JWTs have advantages.
+
+A JWT is smaller than a SAML token when it is encoded since JSON is less verbose than XML. JWT is an excellent option for passing in HTML and HTTP environments because of this.
+
+A public/private key pair in the form of an X.509 certificate can be used to sign JWTs, making them more secure. The HMAC technique can also be used to symmetrically sign a JWT by a shared secret. Furthermore, even though SAML tokens can employ public/private key pairs similar to those used by JWT, signing XML with an XML Digital Signature without creating obtuse security flaws is far more challenging than signing JSON.
+
+JSON parsers are more prevalent since they map directly to objects in the majority of programming languages. On the other hand, there is no inherent document-to-object mapping in XML. As a result, working with JWT is simpler than SAML claims.
+
+JWT is used on a large scale throughout the internet. As a result, it is simpler to process on consumer devices, particularly mobile.
